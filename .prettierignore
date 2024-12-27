@@ -1,0 +1,19 @@
+# Ignore artifacts:
+build
+
+# dotfile
+.env*
+
+# markdown
+*.md
+
+# next.js.pre
+/.next/
+/out/
+
+# production
+/build
+
+*.yml
+*.yaml
+*.json
