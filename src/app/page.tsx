@@ -1,3 +1,9 @@
+import { SearchRepositories } from './components/searchRepositories/presenter';
+
 export default function Home() {
-  return <main></main>;
+  return (
+    <main>
+      <SearchRepositories />
+    </main>
+  );
 }
