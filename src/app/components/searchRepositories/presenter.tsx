@@ -25,7 +25,11 @@ export const SearchRepositories = (): JSX.Element => {
         <SearchInput handleSubmit={handleSubmit} isLoading={isLoading} />
         <VStack>
           {repositories.map((repository) => (
-            <RepositoryCard repository={repository} onClick={onOpenModal} />
+            <RepositoryCard
+              repository={repository}
+              onClick={onOpenModal}
+              key={repository.id}
+            />
           ))}
         </VStack>
       </VStack>
