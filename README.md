@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
+## 動作について
 ```bash
+# node
+20.14.0
+# 起動
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# 以下にアクセス
+http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 機能
+- リポジトリ検索機能
+- ソート検索機能
+- 詳細表示機能
+- オリジナルへのジャンプ機能
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 工夫したポイント
+### Container Presenterパターンの使用
+ロジックをhooks.tsへ完全に分離し、presenterから各コンポーネントへ落とす方式を採用。
+これにより、見た目のテストやストーリーブックが書きやすくなる。
+### useEffect等を使用しない形での外部データ取得
+際レンダリングを追うのが困難になるuseEffectやonChangeによるステート変更を採用せず、form組み込みのsubmitにより発火させている。
+### Loading表示やエラー時のトーストなど、最低限のUXを実装
+連打を防ぎ、ユーザーにロード中であることを視覚的に示すためのボタンローディングや、エラー時のトーストも実装。
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 課題
+### サーバーサイドアクション未使用
+今回はサーバー側で動かせるものが見つからなかったので全てCSRとなっている
+### Next15とReact19
+最新のverであればuseActionStateを使用して、サーバーサイドで検索実行ができたかも
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## デモ
+![リポジトリ検索デモ](https://github.com/user-attachments/assets/c6053ae4-9438-4b4a-a12c-372c8033af7d)
